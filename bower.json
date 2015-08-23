@@ -1,0 +1,27 @@
+{
+  "name": "Roguelike",
+  "main": "Roguelike.js",
+  "version": "0.0.1",
+  "authors": [
+    "Sam Beaven <sambeaven@gmail.com>"
+  ],
+  "description": "A javascript and html 5 roguelike",
+  "moduleType": [
+    "es6",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "rogue",
+    "roguelike",
+    "game"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
