@@ -34,16 +34,20 @@ requirejs(['jquery', 'map'],
     window.onkeyup = function(e){
       var evt = e ? e:event;
       var keyCode = evt.keyCode;
-      if (keyCode === 37){
+      //left
+      if (keyCode === 37 && map.isCellPassable(player.x-1, player.y)){
         player.x = player.x - 1;
       }
-      if(keyCode === 38){
+      //down
+      if(keyCode === 38 && map.isCellPassable(player.x, player.y-1)){
         player.y = player.y - 1;
       }
-      if(keyCode === 39){
+      //right
+      if(keyCode === 39 && map.isCellPassable(player.x+1, player.y)){
         player.x = player.x + 1;
       }
-      if (keyCode === 40){
+      //up
+      if (keyCode === 40 && map.isCellPassable(player.x, player.y+1)){
         player.y = player.y + 1;
       }
       context.clearRect(0, 0, game.width, game.height);
