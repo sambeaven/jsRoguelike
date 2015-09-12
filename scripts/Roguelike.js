@@ -6,8 +6,7 @@ requirejs.config({
 });
 
 requirejs(['jquery', 'map'],
-function($, map){
-  $(function(){
+  function($, map){
 
     var player = {
       x: 60,
@@ -19,11 +18,6 @@ function($, map){
     var game = document.getElementById("game");
     console.log(game);
     var context = game.getContext("2d");
-
-
-
-
-
 
     var render = function(){
       context.font="20px Courier";
@@ -55,8 +49,5 @@ function($, map){
       context.clearRect(0, 0, game.width, game.height);
       render();
     };
-
-
-
-  })
-});
+  }
+);
