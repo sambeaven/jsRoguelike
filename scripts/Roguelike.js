@@ -27,6 +27,7 @@ requirejs(['jquery', 'map'],
           context.fillText(print, x * TILE_SIZE, y * TILE_SIZE);
         }
       }
+      $('#info').text(JSON.stringify(map.toJson(player)));
     };
 
     render();

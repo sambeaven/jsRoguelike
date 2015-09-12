@@ -20,11 +20,24 @@ define(function(){
     return true;
   }
 
+  function toJson(player){
+    var Json = {map:{}};
+    var mapId = 0;
+    for (x = 1; x <= MAP_SIZE; x++){
+        for (y = 1; y <= MAP_SIZE; y++){
+          var print = getTile(x, y, player);
+          Json.map[mapId] = {x: x, y: y, tile: print};
+          mapId++;
+        }
+      }
+      return Json;
+  }
 
   return {
     getTile: getTile,
     mapSize: MAP_SIZE,
-    isCellPassable: isCellPassable
+    isCellPassable: isCellPassable,
+    toJson: toJson
   }
 
 });
