@@ -1,14 +1,13 @@
 requirejs.config({
   paths: {
-    jquery: '../bower_components/jquery/dist/jquery.min',
-    store: '../bower_components/store/store.min'
+    jquery: '../bower_components/jquery/dist/jquery.min'
   }
 
 
 });
 
-requirejs(['jquery', 'store', 'map', 'agents'],
-  function($, store, map, agents){
+requirejs(['jquery', 'io', 'map', 'agents'],
+  function($, io, map, agents){
     var TILE_SIZE = 20;
 
     var game = document.getElementById("game");
@@ -29,8 +28,6 @@ requirejs(['jquery', 'store', 'map', 'agents'],
     };
 
     render();
-
-
 
     window.onkeyup = function(e){
       var evt = e ? e:event;
@@ -53,20 +50,12 @@ requirejs(['jquery', 'store', 'map', 'agents'],
       };
       //S: Save
       if (keyCode === 83) {
-        var saveObject = {};
-        saveObject.map = map.toJson(player);
-        saveObject.player = agents.toJson();
-
-        store.set('SamsRogueGame', saveObject);
+        io.save(map, agents);
       };
       //L: Load
       if (keyCode === 76) {
-        var saveObject = store.get('SamsRogueGame');
-        if (saveObject){
-          player.x = saveObject.player.x;
-          player.y = saveObject.player.y;
-          render();
-        }
+        io.load(player);
+        render();
       };
 
       context.clearRect(0, 0, game.width, game.height);
