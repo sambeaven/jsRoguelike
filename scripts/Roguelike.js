@@ -5,8 +5,8 @@ requirejs.config({
 
 });
 
-requirejs(['jquery'],
-function($){
+requirejs(['jquery', 'map'],
+function($, map){
   $(function(){
 
     var player = {
@@ -15,31 +15,21 @@ function($){
     };
 
     var TILE_SIZE = 20;
-    var GAME_SIZE = 10;
 
     var game = document.getElementById("game");
     console.log(game);
     var context = game.getContext("2d");
 
-    var getTile = function(x, y){
-          if (player.x === x*TILE_SIZE && player.y === y*TILE_SIZE){
-            return '@';
-          }
-          else if (x === GAME_SIZE || y === GAME_SIZE || x === 1 || y === 1){
-            return '#';
-          }
-          else{
-            return '.';
-          }
-    };
+
+
+
 
 
     var render = function(){
-
       context.font="20px Courier";
-      for (x = 1; x <= GAME_SIZE; x++){
-        for (y = 1; y <= GAME_SIZE; y++){
-          var print = getTile(x, y);
+      for (x = 1; x <= map.mapSize; x++){
+        for (y = 1; y <= map.mapSize; y++){
+          var print = map.getTile(x, y, player, TILE_SIZE);
           context.fillText(print, x * TILE_SIZE, y * TILE_SIZE);
         }
       }
