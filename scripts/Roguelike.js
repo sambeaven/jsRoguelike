@@ -5,19 +5,15 @@ requirejs.config({
 
 });
 
-requirejs(['jquery', 'map'],
-  function($, map){
-
-    var player = {
-      x: 3,
-      y: 3
-    };
-
+requirejs(['jquery', 'map', 'agents'],
+  function($, map, agents){
     var TILE_SIZE = 20;
 
     var game = document.getElementById("game");
     console.log(game);
     var context = game.getContext("2d");
+
+    var player = agents.player;
 
     var render = function(){
       context.font="20px Courier";
@@ -27,10 +23,16 @@ requirejs(['jquery', 'map'],
           context.fillText(print, x * TILE_SIZE, y * TILE_SIZE);
         }
       }
-      $('#info').text(JSON.stringify(map.toJson(player)));
+      
     };
 
     render();
+
+    var saveObject = {};
+    saveObject.map = map.toJson(player);
+    saveObject.player = agents.toJson();
+
+    $('#info').text(JSON.stringify(saveObject));
 
     window.onkeyup = function(e){
       var evt = e ? e:event;
