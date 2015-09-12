@@ -9,8 +9,8 @@ requirejs(['jquery', 'map'],
   function($, map){
 
     var player = {
-      x: 60,
-      y: 60
+      x: 3,
+      y: 3
     };
 
     var TILE_SIZE = 20;
@@ -23,7 +23,7 @@ requirejs(['jquery', 'map'],
       context.font="20px Courier";
       for (x = 1; x <= map.mapSize; x++){
         for (y = 1; y <= map.mapSize; y++){
-          var print = map.getTile(x, y, player, TILE_SIZE);
+          var print = map.getTile(x, y, player);
           context.fillText(print, x * TILE_SIZE, y * TILE_SIZE);
         }
       }
@@ -35,16 +35,16 @@ requirejs(['jquery', 'map'],
       var evt = e ? e:event;
       var keyCode = evt.keyCode;
       if (keyCode === 37){
-        player.x = player.x - TILE_SIZE;
+        player.x = player.x - 1;
       }
       if(keyCode === 38){
-        player.y = player.y - TILE_SIZE;
+        player.y = player.y - 1;
       }
       if(keyCode === 39){
-        player.x = player.x + TILE_SIZE;
+        player.x = player.x + 1;
       }
       if (keyCode === 40){
-        player.y = player.y + TILE_SIZE;
+        player.y = player.y + 1;
       }
       context.clearRect(0, 0, game.width, game.height);
       render();
