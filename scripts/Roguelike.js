@@ -2,8 +2,6 @@ requirejs.config({
   paths: {
     jquery: '../bower_components/jquery/dist/jquery.min'
   }
-
-
 });
 
 requirejs(['jquery', 'io', 'map', 'agents'],
@@ -65,4 +63,4 @@ requirejs(['jquery', 'io', 'map', 'agents'],
       render();
     };
   }
-);
+  );

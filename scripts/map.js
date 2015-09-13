@@ -8,17 +8,17 @@ define(function(){
     var mapId = 0;
     var tile = '';
     for (var x = 1; x <= MAP_WIDTH; x++){
-        for (var y = 1; y <= MAP_HEIGHT; y++){
-          if (x === MAP_WIDTH || y === MAP_HEIGHT || x === 1 || y === 1){
-            tile = '#';
-          }
-          else{
-            tile = '.';
-          }
-          map[mapId] = {x: x, y: y, tile: tile};
-          mapId++;
+      for (var y = 1; y <= MAP_HEIGHT; y++){
+        if (x === MAP_WIDTH || y === MAP_HEIGHT || x === 1 || y === 1){
+          tile = '#';
         }
+        else{
+          tile = '.';
+        }
+        map[mapId] = {x: x, y: y, tile: tile};
+        mapId++;
       }
+    }
   }
 
   function getTile(x, y){ 
@@ -40,13 +40,13 @@ define(function(){
     var Json = {map:{}};
     var mapId = 0;
     for (x = 1; x <= MAP_WIDTH; x++){
-        for (y = 1; y <= MAP_HEIGHT; y++){
-          var print = getTile(x, y);
-          Json.map[mapId] = {x: x, y: y, tile: print};
-          mapId++;
-        }
+      for (y = 1; y <= MAP_HEIGHT; y++){
+        var print = getTile(x, y);
+        Json.map[mapId] = {x: x, y: y, tile: print};
+        mapId++;
       }
-      return Json;
+    }
+    return Json;
   }
 
   return {
