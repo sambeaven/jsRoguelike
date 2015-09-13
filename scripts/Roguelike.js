@@ -18,9 +18,9 @@ requirejs(['jquery', 'io', 'map', 'agents'],
 
     var render = function(){
       context.font="20px Courier";
-      for (x = 1; x <= map.mapWidth; x++){
-        for (y = 1; y <= map.mapHeight; y++){
-          var print = map.getTile(x, y, player);
+      for (var x = 1; x <= map.mapWidth; x++){
+        for (var y = 1; y <= map.mapHeight; y++){
+          var print = map.getTile(x, y);
           if (x === player.x && y === player.y) {
             print = '@';
           };

@@ -2,24 +2,31 @@ define(function(){
   var MAP_HEIGHT = 20;
   var MAP_WIDTH = 35
 
-  var map = {};
+  var map = [];
 
   function generateMap(){
-    for (x = 1; x <= MAP_SIZE; x++){
-        for (y = 1; y <= MAP_SIZE; y++){
-          //generate the whole map here.
-          //getTile should look in the map var to get the cell.
+    var mapId = 0;
+    var tile = '';
+    for (var x = 1; x <= MAP_WIDTH; x++){
+        for (var y = 1; y <= MAP_HEIGHT; y++){
+          if (x === MAP_WIDTH || y === MAP_HEIGHT || x === 1 || y === 1){
+            tile = '#';
+          }
+          else{
+            tile = '.';
+          }
+          map[mapId] = {x: x, y: y, tile: tile};
+          mapId++;
         }
       }
   }
 
   function getTile(x, y){ 
-    if (x === MAP_WIDTH || y === MAP_HEIGHT || x === 1 || y === 1){
-      return '#';
-    }
-    else{
-      return '.';
-    }
+    if (map.length === 0) {
+      generateMap(); 
+    };    
+    
+    return $.grep(map, function(tile){ return tile.x === x && tile.y === y})[0].tile;
   }
   
   function isCellPassable(x, y){
@@ -32,8 +39,8 @@ define(function(){
   function toJson(){
     var Json = {map:{}};
     var mapId = 0;
-    for (x = 1; x <= MAP_SIZE; x++){
-        for (y = 1; y <= MAP_SIZE; y++){
+    for (x = 1; x <= MAP_WIDTH; x++){
+        for (y = 1; y <= MAP_HEIGHT; y++){
           var print = getTile(x, y);
           Json.map[mapId] = {x: x, y: y, tile: print};
           mapId++;
