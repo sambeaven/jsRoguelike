@@ -21,6 +21,9 @@ requirejs(['jquery', 'io', 'map', 'agents'],
       for (x = 1; x <= map.mapWidth; x++){
         for (y = 1; y <= map.mapHeight; y++){
           var print = map.getTile(x, y, player);
+          if (x === player.x && y === player.y) {
+            print = '@';
+          };
           context.fillText(print, x * TILE_SIZE, y * TILE_SIZE);
         }
       }
