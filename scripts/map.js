@@ -1,11 +1,12 @@
 define(function(){
-  var MAP_SIZE = 10;
+  var MAP_HEIGHT = 20;
+  var MAP_WIDTH = 35
 
   function getTile(x, y, player, tileSize){ 
     if (player && player.x === x && player.y === y){
       return '@';
     }
-    else if (x === MAP_SIZE || y === MAP_SIZE || x === 1 || y === 1){
+    else if (x === MAP_WIDTH || y === MAP_HEIGHT || x === 1 || y === 1){
       return '#';
     }
     else{
@@ -35,7 +36,8 @@ define(function(){
 
   return {
     getTile: getTile,
-    mapSize: MAP_SIZE,
+    mapHeight: MAP_HEIGHT,
+    mapWidth: MAP_WIDTH,
     isCellPassable: isCellPassable,
     toJson: toJson
   }

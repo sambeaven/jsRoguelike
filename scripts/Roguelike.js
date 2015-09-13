@@ -18,8 +18,8 @@ requirejs(['jquery', 'io', 'map', 'agents'],
 
     var render = function(){
       context.font="20px Courier";
-      for (x = 1; x <= map.mapSize; x++){
-        for (y = 1; y <= map.mapSize; y++){
+      for (x = 1; x <= map.mapWidth; x++){
+        for (y = 1; y <= map.mapHeight; y++){
           var print = map.getTile(x, y, player);
           context.fillText(print, x * TILE_SIZE, y * TILE_SIZE);
         }
