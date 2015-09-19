@@ -35,19 +35,19 @@ requirejs(['jquery', 'io', 'map', 'agents'],
       var keyCode = evt.keyCode;
       //left
       if (keyCode === 37 && map.isCellPassable(player.x-1, player.y)){
-        player.x = player.x - 1;
+        player = agents.moveAgent(player, "west");
       };
       //down
       if(keyCode === 38 && map.isCellPassable(player.x, player.y-1)){
-        player.y = player.y - 1;
+        player = agents.moveAgent(player, "south");
       };
       //right
       if(keyCode === 39 && map.isCellPassable(player.x+1, player.y)){
-        player.x = player.x + 1;
+        player = agents.moveAgent(player, "east");
       };
       //up
       if (keyCode === 40 && map.isCellPassable(player.x, player.y+1)){
-        player.y = player.y + 1;
+        player = agents.moveAgent(player, "north");
       };
       //S: Save
       if (keyCode === 83) {
@@ -56,7 +56,6 @@ requirejs(['jquery', 'io', 'map', 'agents'],
       //L: Load
       if (keyCode === 76) {
         io.load(player);
-        render();
       };
 
       context.clearRect(0, 0, game.width, game.height);
