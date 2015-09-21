@@ -1,10 +1,13 @@
-define(function(){
+define(["mapGenerators/defaultMapGenerator"], function(defaultMapGenerator){
   var MAP_HEIGHT = 20;
   var MAP_WIDTH = 35
 
   var map = [];
 
   function generateMap(){
+    
+    //map = defaultMapGenerator.generateMap(MAP_HEIGHT, MAP_WIDTH);
+
     var mapId = 0;
     var tile = '';
     for (var x = 1; x <= MAP_WIDTH; x++){
